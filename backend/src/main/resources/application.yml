@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: fileguard
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/fileguard}
+    username: ${SPRING_DATASOURCE_USERNAME:fileguard}
+    password: ${SPRING_DATASOURCE_PASSWORD:fileguardpassword}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+server:
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
